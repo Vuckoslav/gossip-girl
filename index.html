@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gossip Girl</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="jquery/moveit.js"></script>
+     <script src='https://code.responsivevoice.org/responsivevoice.js'></script> 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+<body onload="myMessage()">
+    <div class="backg">
+        <div class="txt">TAP THE GIRL!!</div>
+        <div class="table"></div>
+        <div class="girl">
+            <div class="hair">
+                <div class="bun">
+                    <div class="bun1"></div>
+                </div>
+            </div>
+             <div class="face">
+                <div class="er1"></div>
+                <div class="er2"></div>
+                <div class="eye-l">
+                    <div class="eye1">
+                        <div class="eyeb">
+                            <div class="ee1">
+                                <div class="e1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="eye-r">
+                    <div class="eye2">
+                        <div class="eyeb">
+                            <div class="ee2">
+                                <div class="e1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="lip"></div>
+              
+            </div>
+            <div class="h1">
+                <div class="b1"></div>
+                <div class="b2"></div>
+                <div class="b3"></div>
+            </div>
+             <div class="dress">
+                <div class="scarf"></div>
+                <div class="s1"></div>
+                <div class="s2"></div>
+                <div class="scarf1"></div>
+                <div class="hand">
+                	<div class="coffee">
+                        <div class="vapr1"></div>
+                        <div class="vapr2"></div>
+                        <div class="cup">
+                            <div class="c">
+                                <div class="lid">
+                                    <div class="l1"></div>
+                                </div>
+                                 </div>
+                        </div>
+                    </div>
+                    <div class="handl">
+                        <div class="glove"></div>
+                    </div>
+                    <div class="handr">
+                        <div class="glove"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="tooltip">
+         <button id="talk" onclick="document.getElementById('talking').style.display = 'block'"><span class="fa" id="first" style="margin-left: 7px;font-size: 50px;"></span><span class="fa" id="second" style="margin-left: 7px;font-size: 50px;"></span></button><span class="tooltiptext">TALK WITH GIRL!</span>
+        </div>
+        <div class="tooltip1">
+         <button id="chat" onclick="document.getElementById('chatting').style.display = 'block'"><span class="fa" id="third" style="margin-left: 7px;font-size: 50px;"></span><span class="fa" id="fourth" style="margin-left: 7px;font-size: 50px;"></span></button><span class="tooltiptext1">CHAT WITH GIRL!</span>
+     </div>
+      
+    </div>
+    <div id="message">Let's gossip...</div> 
+
+
+
+    <div id="chatting" class="chat-modal">
+          <span onclick="document.getElementById('chatting').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <div class="modal-content animate">
+              <header>
+               <h1 class="nice-font" >Let's chat!</h1>
+               </header>
+        
+               <main class="nice-font">
+           
+               </main>
+        
+               <div id="last"></div>
+        
+               
+                <div id="command">
+                <input placeholder="Ask me something ..." type="text" />
+                <button class="shadow nice-font" id="ask">Ask</button>
+                 </div>
+                 
+          </div>
+    </div>
+
+
+
+    <div id="talking" class="talk-modal">
+          <span onclick="document.getElementById('talking').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <div class="modal-content animate">
+           <label class="switch">
+  <input type="checkbox" onclick='handleClick(this)'>
+  <span class="slider round"></span>
+  
+</label>
+   <h2>ON/OFF</h2>   
+  <table border=3>
+<tr>   
+ <td>
+<button  id = "b1" onclick = "today()"> '🔊 Call me for date </button>
+</td>
+</tr>
+<tr>   
+ <td> 
+<button id = "b2" onclick = "theTime()">🔊 Call me for time</button>   
+ </td>
+</tr>       
+<tr>   
+ <td> 
+<button id = "b3" onclick = "news()">🔊 Call me for latest news </button>  
+</td>
+</tr>
+<tr>   
+ <td>
+<button id = "b4" onclick = "quotes()">🔊 Call me for programming qoutes </button> 
+</td>
+</tr>
+<tr>   
+ <td>
+<button  id = "b5" onclick = "calculate()">🔊 Let me calculate
+</button>
+<input  type="text" id="calc" name="name" >
+</td>
+</tr>
+<tr>   
+ <td>
+<button  id = "b6" onclick = "answer()">🔊 Ask me free
+</button>
+<input  id = "question" type="text"  name="name" >
+</td>
+</tr> 
+  <tr>
+    <td width = 100 height = 100>
+      <img id="im" src="https://static.thenounproject.com/png/260474-200.png" name="canvas" />
+    </td>
+  </tr>
+  </table>
+   
+          </div>
+    </div>
+   <script>
+        function smile() {
+            var a;
+            a = $("#first");
+            a.html("&#xf118;");
+            setTimeout(function(){
+                a.html("&#xf11a;");
+            },1000);
+            setTimeout(function(){
+                a.html("&#xf119;");
+            },2000);
+            setTimeout(function(){
+                a.html("&#xf11a;");
+            },3000);
+        }
+          smile();
+          setInterval(smile,4000);
+
+           function audio() {
+            var b;
+            b = $("#second");
+            b.html("&#xf028;");
+            setTimeout(function(){
+                b.html("&#xf027;");
+            },1000);
+            setTimeout(function(){
+                b.html("&#xf026;");
+            },2000);
+            
+        }
+          audio();
+          setInterval(audio,3000);
+
+          function chat() {
+            var c;
+            c = $("#third");
+            c.html("&#xf27b;");
+            setTimeout(function(){
+                c.html("&#xf0e5;");
+            },1000);
+            setTimeout(function(){
+                c.html("&#xf075;");
+            },2000);
+            setTimeout(function(){
+                c.html("&#xf27a;");
+            },3000);
+            
+        }
+          chat();
+          setInterval(chat,4000);
+
+          function chats() {
+            var d;
+            d = $("#fourth");
+            d.html("&#xf0e6;");
+            setTimeout(function(){
+                d.html("&#xf086;");
+            },1000);
+            setTimeout(function(){
+                d.html("&#xf0e6;");
+            },2000);
+            
+        }
+          chats();
+          setInterval(chats,3000);
+
+          function myMessage() {
+          var x = document.getElementById("message");
+           x.className = "show";
+         setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+            }
+
+            var ThingsICanDo = [
+    "What's your name ?",
+    "What's my name ?",
+    "What's the time ?",
+    "What date is today?",
+    "Hello Girl",
+    "Girl where are you?",
+    "How are you ?",
+    "5+10",
+    "lol",
+    "best programming language",
+    "Good Night",
+    "Good Morning",
+    "Good Afternoon",
+    "do you like chatting",
+    "i love you",
+    "open facebook",
+    "tell me a joke",
+    "commands",
+    "list",
+    "features"
+    
+];
+
+var ListThings = ThingsICanDo => "You can try asking the following : <br><br><br>" + ThingsICanDo.join("<br/><br/>");
+
+var Random = list => list[Math.floor(Math.random()*list.length)]; 
+
+var WhatCanIDo = ThingsICanDo => Random(ThingsICanDo); 
+
+
+var Links = {
+    "facebook" : "https://www.facebook.com",
+    "google" : "https://www.google.com",
+    "twitter" : "https://www.twitter.com",
+    "youtube" : "https://www.youtube.com",
+
+};
+
+var getLink = siteName => `Click here to open <a href="${Links[siteName]}">${siteName}</a>`;
+
+
+var Jokes = [
+    
+    `A: I have the perfect son.<br/>
+B: Does he smoke? <br/>
+A: No, he doesn't. <br/>
+B: Does he drink beer? <br/> 
+A: No, he doesn't. <br/>
+B: Does he ever come home late? <br/> 
+A: No, he doesn't. <br/>
+B: I guess you really do have the perfect son. How old is he?<br/> 
+A: He will be six months old next Wednesday.<br/>`,
+`Patient: Doctor! You've got to help me! Nobody ever listens to me. No one ever pays any attention to what I have to say.<br/>
+Doctor: Next please! `,
+`Headmaster: I've had complaints about you, Johnny, from all your teachers. What have you been doing?<br/> 
+Johnny: Nothing, sir.<br/> 
+Headmaster: Exactly.<br/> `,
+`PUPIL: Would you punish me for something I didn't do? <br/> 
+TEACHER: Of course not.<br/> 
+PUPIL: Good, because I haven't done my homework.<br/>`
+
+];
+
+var TellAJoke = Jokes => Random(Jokes);
+
+
+var Message = () => alert("Ask this girl about her name,date,time, where is she, how is she, about her favorite programming language ,say hello and others....what does she love, like,...ask her to tell you a joke, about her features, internet profiles,...command to her and other...Be free!!!  ");
+
+var illegals = [
+  "window",
+  ...Object.keys(window),
+  ...Object.keys(document),
+  ...Object.keys(Element.prototype)
+];
+
+var isLegal = string => {
+    
+    let Legal = true;
+
+    illegals.forEach(illegal=>{
+        
+        if(string.indexOf(illegal) !== -1)
+        {
+            Legal = false;
+        }
+        
+    });
+    
+    return Legal;
+}
+
+var HtmlSpecialChars = string => {
+ 
+    let escapedString = string;
+        
+    HtmlSpecialChars.specialchars.forEach(
+       chr=>{
+       
+           escapedString = escapedString.replace(
+           new RegExp(chr[0], 'g'), 
+           chr[1]
+           );
+           
+       });
+  
+    
+    return escapedString;
+};
+     
+HtmlSpecialChars.specialchars = [
+    [ '&', '&amp;' ],
+    [ '<', '&lt;' ],
+    [ '>', '&gt;' ],
+    [ '"', '&quot;' ]
+];
+
+var monthNames = [
+    "January",
+    "February",
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August", 
+    "September", 
+    "October",
+    "November", 
+    "December"
+ ]; 
+
+
+var today = monthNames =>
+{
+  let date = new Date();
+  
+  return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  
+}
+
+
+var now = () =>
+{
+    let date = new Date();
+    
+    return date.toLocaleTimeString();
+}
+
+var Evaluate = expression =>
+{
+    try
+    {
+        if(isLegal(expression))
+        {
+            
+        
+            var result = eval(HtmlSpecialChars(expression));
+            return result;
+        
+        }
+        else 
+        {
+            return "error";
+        }
+    }
+    
+    catch(err)
+    {
+        return "error";
+    }
+}
+
+var Answers = {
+    "features" : ListThings(ThingsICanDo),
+    "commands" : ListThings(ThingsICanDo),
+    "list" : ListThings(ThingsICanDo),
+    "joke" : TellAJoke(Jokes),
+    "what you can do" : `Try saying '${ WhatCanIDo(ThingsICanDo)}'`,
+    "who is your creator" : "My creator is MARIA",
+    "meaning of life" : "The meaning of life is love <3 <3 <3 <3.",
+    "hello" : "Hello %U% 😃. How can I help ? ",
+    "hi" : "Hi %U% 😁",
+    "hola" : "Hola amigo 😁",
+    "my name" : "Your name is %U% &#10024;",
+    "your name" : "My name is Gossip-girl &#10024;",
+    "sam" : "I'm here for you %U%",
+    "date" : "Its "+ today(monthNames) + " today. Make this day a great one %U% 😀",
+    "time" : "The time is " + now() + " in your region.",
+    "who is better google assistant or me " : "No virtual assistant is better than me 😎",
+    "best programming language" : "the one that lacks curly braces 🐍",
+    "bye" : "Good bye. Hope we meet soon 😀",
+    "good night" : "Good Night %U% 🌃",
+    "good morning" : "Good Morning %U% 🌅",
+    "good afternoon" : "Good Afternoon %U% ☀",
+    "good evening" : "Good Evening %U% 🌇",
+    "how are you" : "I am great !!! %U%. 😃",
+    "you are cool" : "Thanks, I was born this way 😉",
+    "i love you" : "I Love you too %U% 😊",
+    "awesome" : "Glad, you liked it 😊",
+    "do you like to chat" : "Yes, chat is fun. Infact, I love it 😃",  
+"lol" : "Haha.. That was funny 😂",
+"facebook" : getLink("facebook"),
+"google" : getLink("google"),
+"twitter" : getLink("twitter")
+};
+
+ 
+var Notfound = "Sorry, I have no answers for that.";
+
+var Invalid = "Invalid Expression";
+
+ 
+var D = window.document;
+
+var element = selector => D.querySelector(selector);
+
+var Answer = (Main,User,Text) =>
+{
+    let Flag = false;
+    
+    var Result = Evaluate(Text);
+    
+    text = Text.toLowerCase();
+    
+    Object.keys(Answers).forEach(key =>{
+    
+    if(!Flag)
+    {
+        if(text.indexOf(key) !== -1 )
+        {
+    
+          addAnswer(
+              Main,
+              Answers[key].replace(
+              "%U%",
+              User
+              )
+          );
+            
+          Flag = true;
+        
+       }
+   
+       else if(typeof Result == "number")
+       {
+          
+             addAnswer(
+                 Main,
+                 `${Text} equals ${Result}`
+             );
+             
+             Flag = true;
+        
+       }
+       
+       }
+        
+    });
+    
+    if(!Flag)
+    {
+        addAnswer(Main,Notfound);
+    }
+    
+    
+};
+
+var addQuestion = (Main,text) =>
+{
+    Main.innerHTML += `
+        <div class="row">
+            <div class="chat question shadow">${text}</div>
+        </div>
+    `;
+}
+
+var addAnswer = (Main,text) =>
+{
+    Main.innerHTML += `
+    <div class="row">
+        <div class="chat answer shadow">${text}</div>
+    </div>
+    `;
+}
+
+
+D.addEventListener("DOMContentLoaded",()=>{
+    
+    var Main = element("main");
+    
+    var Askbtn = element("#ask");
+    
+    var Question = element("input");
+    
+    var Lastdiv = element("#last");
+    
+    let User = prompt("Enter your name :");
+    
+    while(User === null  || User === '')
+    {
+    
+        User = prompt("Your name is required for the Girl to work properly : ");
+        
+    }
+    
+    Question.focus();
+    
+    var Ask = () =>{
+        
+        var Text = Question.value;
+        
+        if(Text.length)
+        {
+        
+            addQuestion(Main, Text);
+        
+            Question.value = "";
+            
+            Answer(Main,User,Text);
+             
+            Lastdiv.scrollIntoView();
+        
+        }
+    };
+    
+    
+    Askbtn.addEventListener("click",Ask);
+    
+    Question.addEventListener("keyup",function(event){
+        if(event.keyCode === 13)  Ask();
+    });
+    
+    addAnswer(Main,`Hello ${User}, I am Gossip-girl. I know all the gossip How can I help ?`);
+    
+    Message();
+});
+var clicked = false;
+var buttons = ["b1", "b2", "b3", "b4", "b5","b6"];
+buttons.forEach(function(item){
+    var btn = document.getElementById(item);
+    btn.disabled = true;
+    }
+);
+
+
+
+function today() {
+     var d = new Date();
+     var text = "Today is "  + d.getDate().toString() + "." + (d.getMonth()+1).toString() + "." + d.getFullYear().toString();
+    responsiveVoice.speak(text);
+} 
+ 
+
+
+function handleClick(s){
+     var pic = document.getElementById("im");
+    if(s.checked){
+      pic.src = "http://icons.iconarchive.com/icons/itzikgur/my-seven/512/Favorities-icon.png";
+        responsiveVoice.speak('Hello. I am Maria. I am your personal gossip-girl. You can ask me anything');
+        buttons.forEach(function(item){
+    var btn = document.getElementById(item);
+    btn.disabled = false;
+    }
+);
+        
+    }
+    else {
+         pic.src =   pic.src = "https://static.thenounproject.com/png/260474-200.png";
+        buttons.forEach(function(item){
+    var btn = document.getElementById(item);
+    btn.disabled = true;
+    });
+        responsiveVoice.speak('Good Bye. Have a nice day') ;
+    
+  
+       
+}
+}
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    
+    return "The time is " + convertHourToName(h) + " o'clock and " + convertNumberToName(m) + " past";
+    
+}
+
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+} 
+
+function convertHourToName(num) {
+    if (num > 12) {
+        num -= 12;
+    }
+    return convertNumberToName(num);
+}
+
+function convertNumberToName(num) {
+    var lowNames = ["zero", "one", "two", "three", 
+                  "four", "five", "six", "seven", "eight", "nine", 
+                 "ten", "eleven", "twelve", "thirteen", "fourteen", 
+                  "fifteen", "sixteen", "seventeen", 
+                  "eighteen", "nineteen"];
+    var tensNames = ["twenty", "thirty", "forty", "fifty", 
+                "sixty", "seventy", "eighty", "ninety"];
+    var tens, ones, result;
+    if (num < lowNames.length) {
+        result = lowNames[num];
+    } else {
+        tens = Math.floor(num / 10);
+        ones = num % 10;
+        if (tens <= 9) {
+            result = tensNames[tens - 2];
+            if (ones > 0) {
+                result += " " + lowNames[ones];
+            }
+        } else {
+            result = "unknown";
+        }
+    }
+    return result;
+}
+
+function theTime(){
+responsiveVoice.speak(startTime ())    ;
+    
+}
+
+function quotes(){
+    quotes = ["I choose a lazy person to do a hard job. Because a lazy person will find an easy way to do it. Bill Gates",
+        
+    "The best thing about a boolean is even if you are wrong, you are only off by a bit.Anonymous" 
+
+,
+    
+    "Good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun.Linus Torvalds",
+    "Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.John Woods"
+
+
+];
+    
+var q = quotes.length; 
+var responseIndex = Math.floor((Math.random() * 10) + 1) % q; 
+var response = quotes[responseIndex];
+responsiveVoice.speak(response, "UK English Male");
+}
+
+
+function calculate(){
+  var toDo =  document.getElementById('calc').value;
+  try{
+  var result = eval(toDo);
+  responsiveVoice.speak("The result of "  + toDo + " is  " + result + ".");
+  }
+  catch(err){
+       responsiveVoice.speak("I dont know. Maybe 42.");
+  }
+  
+}
+function includes(container, value) {
+    var returnValue = false;
+    var pos = container.indexOf(value);
+    if (pos >= 0) {
+        returnValue = true;
+    }
+    return returnValue;
+}
+
+function answer(){
+  var found = false;
+  var datewords = ["today","date"];
+  var timewords = ["time","clock"];
+  var musicwords = ["music","song"];
+  var whatwords = ["what"];
+  var hiwords = ["hello","hi","good" ,"hallo"];
+  var chriswords = ["christmas","merry"];
+  
+  var word =  document.getElementById('question').value.toLowerCase();
+  var words = word.split(" ");
+ 
+  if (includes(datewords,word)){
+      
+      today();
+      return;
+  }
+
+   if (includes(timewords,word)){
+       theTime();
+       found = true;
+   }
+  
+   
+   if (includes(musicwords,word)){
+       var audio = new Audio(' http://eflclassroom.com/rave/Merry%20Christmas!/songs/Let%20it%20Snow%20-%20Frank%20Sinatra.mp3');
+audio.play();
+found = true;
+      
+   }
+  if (includes(hiwords,word)){
+   responsiveVoice.speak("Hi!!! nice to see you");
+   found = true;
+  }
+  
+  if (includes(chriswords,word)){
+       audio = new Audio('http://freesound.org/data/previews/172/172302_3032944-lq.mp3');
+audio.play();
+found = true;
+    
+   
+  }
+  if (found === false){
+       responsiveVoice.speak("Sorry I dont understand what you mean");
+   found = true;
+}
+}
+
+function displayImage() {
+    var num = Math.floor(Math.random() * 3); 
+    
+    document.canvas.src = imagesArray[num];
+
+}
+
+function news(){
+
+var url = 
+         "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=1368e60ba2994da98dd222eae881f05b";
+var req = new Request(url);
+var i = 0
+var text = ""
+
+fetch(req)
+    .then(function(resp){
+    
+        return resp.json();
+    })
+    .then(function(myJson) {
+        
+        for (i in myJson.articles) {
+    text = text +  myJson.articles[i].title + ". "
+}
+  
+    responsiveVoice.speak(text  ); 
+    }); n
+}
+
+             
+
+
+</script> 
+</body>
+</html>
